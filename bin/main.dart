@@ -1,10 +1,11 @@
 import 'package:rsa_test/fileReader.dart' as reader;
+import 'package:password/password.dart';
 import 'package:rsa_test/messageEncrypter.dart';
 
 // demonstration of how to use this
 int main(List<String> arguments) {
-  final password1 = 'password';
-  final password2 = '123456';
+  final password1 = Password.hash('password', new PBKDF2());
+  final password2 = Password.hash('123456', new PBKDF2());
   final message = 'Hello, world!';
 
   // sender creates a MessageEncrypter upon sending the very first message
